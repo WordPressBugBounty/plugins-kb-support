@@ -114,11 +114,37 @@ function kbs_process_login_form()	{
 		}
 
 		$redirect = apply_filters( 'kbs_login_redirect', isset( $_POST['kbs_redirect'] ) ? sanitize_url( wp_unslash( $_POST['kbs_redirect'] ) ) : '', $user_ID );
+
+		$redirect = kbs_safe_redirect_allow_internal( $redirect );
+
+		// If the redirect is not internal, default to the homepage
+		if ( ! $redirect ) {
+			$redirect = home_url();
+		}
+		
 		wp_redirect( $redirect );
 		die();
 	}
 } // kbs_process_login_form
 add_action( 'init', 'kbs_process_login_form' );
+
+if ( ! function_exists( 'kbs_safe_redirect_allow_internal' ) ) {
+	function kbs_safe_redirect_allow_internal( $redirect_url ) {
+		// Parse the redirect URL
+		$redirect_host = parse_url( $redirect_url, PHP_URL_HOST );
+
+		// Get the site's host
+		$site_host = parse_url( home_url(), PHP_URL_HOST );
+
+		// Check if the redirect host matches the site host
+		if ( $redirect_host && strtolower( $redirect_host ) === strtolower( $site_host ) ) {
+			return $redirect_url;
+		}
+
+		// If hosts don't match, return false
+		return false;
+	}
+}
 
 /**
  * Log User In
