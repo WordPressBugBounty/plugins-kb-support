@@ -137,7 +137,9 @@ add_action( 'wp_ajax_kbs_dismiss_notice', 'kbs_ajax_dismiss_admin_notice' );
  */
 function kbs_set_ticket_flagged_status_ajax()   {
     if ( ! current_user_can( 'manage_options' ) ) {
-        wp_die( __( 'You do not have permission to delete this post.' ) );
+	    wp_send_json( array(
+		    'error' => __( 'You do not have permission. Please contact website administrator.', 'kb-support' )
+	    ) );
     }
 
     $ticket_id   = isset( $_POST['ticket_id'] ) ? absint( $_POST['ticket_id'] ) : 0;
@@ -175,7 +177,9 @@ add_action( 'wp_ajax_kbs_set_ticket_flagged_status', 'kbs_set_ticket_flagged_sta
  */
 function kbs_ajax_add_participant()	{
     if ( ! current_user_can( 'manage_options' ) ) {
-        wp_die( __( 'You do not have permission to delete this post.' ) );
+	    wp_send_json( array(
+		    'error' => __( 'You do not have permission. Please contact website administrator.', 'kb-support' )
+	    ) );
     }
 
 	$email     = false;
@@ -218,7 +222,9 @@ add_action( 'wp_ajax_kbs_add_participant', 'kbs_ajax_add_participant' );
  */
 function kbs_ajax_remove_participant()	{
     if ( ! current_user_can( 'manage_options' ) ) {
-        wp_die( __( 'You do not have permission to delete this post.' ) );
+	    wp_send_json( array(
+		    'error' => __( 'You do not have permission. Please contact website administrator.', 'kb-support' )
+	    ) );
     }
 
 	$ticket_id    = isset( $_POST['ticket_id'] ) ? absint( $_POST['ticket_id'] ) : 0;
@@ -250,9 +256,12 @@ add_action( 'wp_ajax_kbs_remove_participant', 'kbs_ajax_remove_participant' );
  * @return	void
  */
 function kbs_ajax_insert_ticket_reply()	{
-    if ( ! current_user_can( 'manage_options' ) ) {
-        wp_die( __( 'You do not have permission to delete this post.' ) );
-    }
+
+	if ( ! isset ( $_POST['kbs_nonce'] ) || ! wp_verify_nonce( $_POST['kbs_nonce'], 'kbs_submission_nonce' ) )  {
+		wp_send_json( array(
+			'error' => __( 'You do not have permission. Please contact website administrator.', 'kb-support' )
+		) );
+	}
 
 	$ticket = new KBS_Ticket( isset( $_POST['ticket_id'] ) ? absint( $_POST['ticket_id'] ) : 0 );
 
@@ -355,11 +364,12 @@ add_action( 'wp_ajax_kbs_display_ticket_replies', 'kbs_ajax_display_ticket_repli
  * @return	string
  */
 function kbs_ajax_load_front_end_replies()	{
-    if ( ! is_user_logged_in() || ! current_user_can( 'manage_options' ) ) {
-        return '';
-    }
-
     $output = '';
+	if ( ! isset ( $_POST['kbs_nonce'] ) || ! wp_verify_nonce( $_POST['kbs_nonce'], 'kbs_submission_nonce' ) )  {
+		wp_send_json( array(
+			'error' => __( 'You do not have permission. Please contact website administrator.', 'kb-support' )
+		) );
+	}
 
     $time_format = get_option( 'time_format' );
     $date_format = get_option( 'date_format' );
@@ -456,10 +466,12 @@ add_action( 'wp_ajax_nopriv_kbs_load_front_end_replies', 'kbs_ajax_load_front_en
  * @return  void
  */
 function kbs_ajax_mark_reply_as_read() {
-    if ( ! is_user_logged_in() || ! current_user_can( 'manage_options' ) ) {
-        return '';
-    }
-
+	if ( ! isset ( $_POST['kbs_nonce'] ) || ! wp_verify_nonce( $_POST['kbs_nonce'], 'kbs_submission_nonce' ) )  {
+		wp_send_json( array(
+			'error' => __( 'You do not have permission. Please contact website administrator.', 'kb-support' )
+		) );
+	}
+	
     $reply_id = isset( $_POST['reply_id'] ) ? absint( $_POST['reply_id'] ) : 0;
 
     if ( ! empty( $reply_id ) )   {
@@ -478,9 +490,11 @@ add_action( 'wp_ajax_nopriv_kbs_read_ticket_reply', 'kbs_ajax_mark_reply_as_read
  * @return	void
  */
 function kbs_ajax_validate_ticket_reply_form()	{
-    if ( ! current_user_can( 'manage_options' ) ) {
-        wp_die( __( 'You do not have permission to delete this post.' ) );
-    }
+	if ( ! isset ( $_POST['kbs_nonce'] ) || ! wp_verify_nonce( $_POST['kbs_nonce'], 'kbs_submission_nonce' ) )  {
+		wp_send_json( array(
+			'error' => __( 'You do not have permission. Please contact website administrator.', 'kb-support' )
+		) );
+	}
 
 	$error  = false;
 	$ticket = isset( $_POST['kbs_ticket_id'] ) ? absint( $_POST['kbs_ticket_id'] ) : 0;
@@ -554,10 +568,12 @@ add_action( 'wp_ajax_nopriv_kbs_validate_ticket_reply_form', 'kbs_ajax_validate_
  * @return	void
  */
 function kbs_ajax_ticket_insert_note()	{
-    if ( ! current_user_can( 'manage_options' ) ) {
-        wp_die( __( 'You do not have permission to delete this post.' ) );
-    }
-
+	if ( ! isset ( $_POST['kbs_nonce'] ) || ! wp_verify_nonce( $_POST['kbs_nonce'], 'kbs_submission_nonce' ) )  {
+		wp_send_json( array(
+			'error' => __( 'You do not have permission. Please contact website administrator.', 'kb-support' )
+		) );
+	}
+	
     if ( isset( $_POST['ticket_id'] ) && isset( $_POST['note_content'] ) ){
 		$note_id = kbs_insert_note( absint( $_POST['ticket_id'] ), sanitize_text_field( wp_unslash( $_POST['note_content'] ) ) );
 
@@ -608,7 +624,9 @@ add_action( 'wp_ajax_kbs_display_ticket_notes', 'kbs_ajax_display_ticket_notes' 
  */
 function kbs_ajax_add_form_field()	{
     if ( ! current_user_can( 'manage_options' ) ) {
-        wp_die( __( 'You do not have permission to delete this post.' ) );
+	    wp_send_json( array(
+		    'error' => __( 'You do not have permission. Please contact website administrator.', 'kb-support' )
+	    ) );
     }
 
 	if ( ! empty( $_POST['form_id'] ) )	{
@@ -636,7 +654,9 @@ add_action( 'wp_ajax_kbs_add_form_field', 'kbs_ajax_add_form_field' );
  */
 function kbs_ajax_save_form_field()	{
     if ( ! current_user_can( 'manage_options' ) ) {
-        wp_die( __( 'You do not have permission to delete this post.' ) );
+	    wp_send_json( array(
+		    'error' => __( 'You do not have permission. Please contact website administrator.', 'kb-support' )
+	    ) );
     }
 
 	if ( ! empty( $_POST['field_id'] && ! empty( $_POST['form_id'] ) ) )	{
@@ -664,7 +684,9 @@ add_action( 'wp_ajax_kbs_save_form_field', 'kbs_ajax_save_form_field' );
  */
 function kbs_ajax_order_form_fields()	{
     if ( ! current_user_can( 'manage_options' ) ) {
-        wp_die( __( 'You do not have permission to delete this post.' ) );
+	    wp_send_json( array(
+		    'error' => __( 'You do not have permission. Please contact website administrator.', 'kb-support' )
+	    ) );
     }
 
 	if( isset( $_POST['fields'] ) ){
@@ -685,10 +707,12 @@ add_action( 'wp_ajax_kbs_order_form_fields', 'kbs_ajax_order_form_fields' );
  * @return	void
  */
 function kbs_ajax_validate_form_submission()	{
-    if ( ! current_user_can( 'manage_options' ) ) {
-        wp_die( __( 'You do not have permission to delete this post.' ) );
-    }
-
+	if ( ! isset ( $_POST['kbs_nonce'] ) || ! wp_verify_nonce( $_POST['kbs_nonce'], 'kbs_submission_nonce' ) )  {
+		wp_send_json( array(
+			'error' => __( 'You do not have permission. Please contact website administrator.', 'kb-support' )
+		) );
+	}
+	
     $form            = new KBS_Form( isset( $_POST['kbs_form_id'] ) ? absint( $_POST['kbs_form_id'] ) : 0 );
 	$error           = false;
 	$agree_to_policy = kbs_get_option( 'show_agree_to_privacy_policy', false );
@@ -705,7 +729,7 @@ function kbs_ajax_validate_form_submission()	{
 	}
 
 	$fields = $form->get_fields();
-
+	
 	foreach ( $fields as $field ) {
 
 		$settings = $form->get_field_settings( $field->ID );
@@ -841,7 +865,9 @@ add_action( 'wp_ajax_kbs_get_customer_data', 'kbs_ajax_get_customer_data' );
  */
 function kbs_ajax_add_customer()	{
     if ( ! current_user_can( 'manage_options' ) ) {
-        wp_die( __( 'You do not have permission to delete this post.' ) );
+	    wp_send_json( array(
+		    'error' => __( 'You do not have permission. Please contact website administrator.', 'kb-support' )
+	    ) );
     }
 
 	if ( empty( $_POST['customer_name'] ) )	{
@@ -912,7 +938,9 @@ add_action( 'wp_ajax_kbs_add_customer', 'kbs_ajax_add_customer' );
  */
 function kbs_ajax_new_customer_for_ticket()	{
     if ( ! current_user_can( 'manage_options' ) ) {
-        wp_die( __( 'You do not have permission to delete this post.' ) );
+	    wp_send_json( array(
+		    'error' => __( 'You do not have permission. Please contact website administrator.', 'kb-support' )
+	    ) );
     }
 
 	if ( ! isset( $_POST['customer_email'] ) || ! is_email( sanitize_email( wp_unslash( $_POST['customer_email'] ) ) ) )	{

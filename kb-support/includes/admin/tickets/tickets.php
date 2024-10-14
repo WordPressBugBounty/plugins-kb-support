@@ -1151,7 +1151,7 @@ function display_extension_tab() {
 		$tabs['suggest_feature'] = array(
 			'name'   => esc_html__( 'Suggest a feature', 'kb-support' ),
 			'icon'   => 'dashicons-external',
-			'url'    => 'https://forms.gle/GsCvf83e5o2k1pnU7',
+			'url'    => 'https://kb-support.com/suggest-a-feature/',
 			'target' => '_blank',
 		);
 

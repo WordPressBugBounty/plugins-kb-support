@@ -117,6 +117,7 @@ function kbs_render_hidden_reply_fields( $ticket_id )	{
 	$hidden_fields = array(
 		'kbs_ticket_id'  => $ticket_id,
 		'kbs_honeypot'   => '',
+		'kbs_nonce'      => wp_create_nonce( 'kbs_submission_nonce' ),
 		'redirect'       => add_query_arg( 'ticket', isset( $_GET['ticket'] ) ? sanitize_text_field( wp_unslash( $_GET['ticket'] ) ) : 0, $current_page ),
 		'action'         => 'kbs_validate_ticket_reply_form'
 	);

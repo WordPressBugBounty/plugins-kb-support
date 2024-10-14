@@ -1,4 +1,4 @@
-<?php
+	<?php
 /**
  * Functions for forms
  *
@@ -456,7 +456,11 @@ function kbs_get_field_type( $type )	{
 	
 	$field_types = kbs_get_field_types();
 	
-	return $field_types[ $type ];
+	if(isset($field_types[ $type ])) {
+		return $field_types[ $type ];
+	}
+	
+	return 'unknown';
 	
 } // kbs_get_field_type
 
@@ -876,6 +880,7 @@ function kbs_display_form_textarea_field( $field, $settings )	{
 
 	$placeholder = ! empty( $settings['placeholder'] ) ? ' placeholder="' . esc_attr( $settings['placeholder'] ) . '"' : '';
 	$class       = ! empty( $settings['input_class'] ) ? esc_attr( $settings['input_class'] ) : '';
+	$output      = '';
 
 	if ( $settings['type'] == 'rich_editor' )	{
 		$wp_settings  = apply_filters( 'kbs_rich_editor_settings', array(
@@ -892,7 +897,7 @@ function kbs_display_form_textarea_field( $field, $settings )	{
 			'quicktags'     => false
 		) );
 
-		$output = wp_editor( '', esc_attr( $field->post_name ), $wp_settings );
+		wp_editor( '', esc_attr( $field->post_name ), $wp_settings );
 
 	} else	{
 
@@ -914,6 +919,7 @@ function kbs_display_form_textarea_field( $field, $settings )	{
 			'class' => array()
 		),
 	);
+	
 	echo wp_kses( $output, $allowed );
 
 } // kbs_display_form_textarea_field

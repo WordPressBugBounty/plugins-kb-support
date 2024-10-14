@@ -4,7 +4,7 @@ Tags: helpdesk, help desk, ticket system, support ticket, knowledge base
 Requires at least: 5.0
 Tested up to: 6.5
 Requires PHP: 5.6
-Stable tag: 1.6.8
+Stable tag: 1.6.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,8 +61,6 @@ More information can be found at [https://kb-support.com/](https://kb-support.co
 * [Custom Ticket Status](https://kb-support.com/downloads/custom-ticket-status/) - Define your own ticket statuses and enable email notifications when a ticket enters the status
 * [Email Signatures](https://kb-support.com/downloads/email-signatures/) - Enables support workers to register a custom signature which can be auto inserted into email notifications sent to customers
 * [MailChimp Integration](https://kb-support.com/downloads/mailchimp-integration/) - Grow your subscriptions by enabling quick and seamless customer sign-ups to your MailChimp newsletter lists via KB Support
-
-**Follow this plugin on [GitHub](https://github.com/KB-Support/kb-support)**
 
 **Languages**
 
@@ -123,8 +121,11 @@ Extensions are available at [https://kb-support.com/extensions/](https://kb-supp
 
 == Changelog ==
 
+= 1.6.9 - 14.10.2024 = 
+Updated: Form nonce issues fixed
+
 = 1.6.8 - 11.10.2024 = 
-Updated: KBS_Redirect vulnerability issue fied
+Updated: KBS_Redirect vulnerability issue fixed
 
 = 1.6.7 - 08.10.2024 = 
 Updated: Capability issues are fixed
