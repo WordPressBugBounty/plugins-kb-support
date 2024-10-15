@@ -4,7 +4,7 @@
  * Plugin Name: KB Support
  * Plugin URI: https://kb-support.com/
  * Description: The best help desk tool for WordPress. Simple yet effective. Feature rich.
- * Version: 1.6.9
+ * Version: 1.7.0
  * Author: KB Support
  * Author URI: https://kb-support.com/
  * Text Domain: kb-support
@@ -29,7 +29,7 @@
  * @package		KBS
  * @category	Core
  * @author		KB Support
- * @version		1.6.9
+ * @version		1.7.0
  */
 // Exit if accessed directly.
 if ( !defined( 'ABSPATH' ) ) {
@@ -187,7 +187,7 @@ if ( !class_exists( 'KB_Support' ) ) {
          */
         private function setup_constants() {
             if ( !defined( 'KBS_VERSION' ) ) {
-                define( 'KBS_VERSION', '1.6.9' );
+                define( 'KBS_VERSION', '1.7.0' );
             }
             if ( !defined( 'KBS_PLUGIN_DIR' ) ) {
                 define( 'KBS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );

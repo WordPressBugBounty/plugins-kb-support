@@ -982,6 +982,7 @@ function kbs_ticket_metabox_reply_row( $ticket_id )	{
 			</div>
 		<?php endif; ?>
         <div id="kbs-new-reply-loader"></div>
+		<?php wp_nonce_field( 'kbs_submission_nonce', 'kbs_nonce' ) ?>
 
 	<?php endif;
 } // kbs_ticket_metabox_details_row
