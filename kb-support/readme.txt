@@ -1,14 +1,14 @@
-=== KB Support - WordPress Help Desk and Knowledge Base ===
+=== KB Support - Customer Support Ticket & Helpdesk Plugin, Knowledge Base Plugin ===
 Contributors: cagdasdag, polatinceler
-Tags: helpdesk, help desk, ticket system, support ticket, knowledge base
+Tags: customer support, helpdesk, support, ticket, knowledge base
 Requires at least: 5.0
-Tested up to: 6.5
+Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 1.7.1
+Stable tag: 1.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The best help desk and Knowledge Base plugin for WordPress. Simple yet effective. Feature rich.
+Best WordPress help desk, customer ticket and Knowledge Base plugin for WordPress. Simple yet effective. Feature rich.
 
 == Description ==
 
@@ -50,17 +50,17 @@ More information can be found at [https://kb-support.com/](https://kb-support.co
 
 **Further enhance the features and functionality of KB Support with paid [extensions](https://kb-support.com/extensions/) such as**:
 
-* [Email Support](https://kb-support.com/downloads/email-support/) - Management of tickets via email for agents and customers. Automation via email for agents.
-* [Easy Digital Downloads Integration](https://kb-support.com/downloads/easy-digital-downloads/) - Integrate KB Support with your Easy Digital Downloads store providing a seamless support solution
-* [WooCommerce Integration](https://kb-support.com/downloads/woocommerce/) - Integrate KB Support with your WooCommerce store providing a seamless support solution
-* [Zapier](https://kb-support.com/downloads/zapier/) - Connect with thousands of 3rd party applications via [zapier.com](https://zapier.com) and fully automate your workflows
-* [Knowledge Base Integrations](https://kb-support.com/downloads/knowledge-base-integrations/) - Fully integrate KB Support into your existing knowledge base solution
-* [Ratings & Satisfaction](https://kb-support.com/downloads/ratings-and-satisfaction/) - Enables customers and visitors to provide feedback on their support experience as well as the quality of your KB articles
-* [Reply Approvals](https://kb-support.com/downloads/reply-approvals/) - Adds an approval process to ticket replies created by selected agents forcing a four-eyed approach to ticket replies
-* [Canned Replies](https://kb-support.com/downloads/canned-replies/) - Instantly reply to tickets with a single click using pre-defined replies to questions you receive the most
-* [Custom Ticket Status](https://kb-support.com/downloads/custom-ticket-status/) - Define your own ticket statuses and enable email notifications when a ticket enters the status
-* [Email Signatures](https://kb-support.com/downloads/email-signatures/) - Enables support workers to register a custom signature which can be auto inserted into email notifications sent to customers
-* [MailChimp Integration](https://kb-support.com/downloads/mailchimp-integration/) - Grow your subscriptions by enabling quick and seamless customer sign-ups to your MailChimp newsletter lists via KB Support
+* [Email Support](https://kb-support.com/pricing/) - Management of tickets via email for agents and customers. Automation via email for agents.
+* [Easy Digital Downloads Integration](https://kb-support.com/pricing/) - Integrate KB Support with your Easy Digital Downloads store providing a seamless support solution
+* [WooCommerce Integration](https://kb-support.com/pricing/) - Integrate KB Support with your WooCommerce store providing a seamless support solution
+* [Zapier](https://kb-support.com/pricing/) - Connect with thousands of 3rd party applications via [zapier.com](https://zapier.com) and fully automate your workflows
+* [Knowledge Base Integrations](https://kb-support.com/pricing/) - Fully integrate KB Support into your existing knowledge base solution
+* [Ratings & Satisfaction](https://kb-support.com/pricing/) - Enables customers and visitors to provide feedback on their support experience as well as the quality of your KB articles
+* [Reply Approvals](https://kb-support.com/pricing/) - Adds an approval process to ticket replies created by selected agents forcing a four-eyed approach to ticket replies
+* [Canned Replies](https://kb-support.com/pricing/) - Instantly reply to tickets with a single click using pre-defined replies to questions you receive the most
+* [Custom Ticket Status](https://kb-support.com/pricing/) - Define your own ticket statuses and enable email notifications when a ticket enters the status
+* [Email Signatures](https://kb-support.com/pricing/) - Enables support workers to register a custom signature which can be auto inserted into email notifications sent to customers
+* [MailChimp Integration](https://kb-support.com/pricing/) - Grow your subscriptions by enabling quick and seamless customer sign-ups to your MailChimp newsletter lists via KB Support
 
 **Languages**
 
@@ -120,7 +120,7 @@ Extensions are available at [https://kb-support.com/extensions/](https://kb-supp
 6. When a customer is accessing a KB Article that is restricted
 
 == Changelog ==
-= 1.7.1 - 15.10.2024 = 
+= 1.7.1 - 17.10.2024 = 
 Updated: Admin page fatal error issue fixes
 
 = 1.7.0 - 15.10.2024 = 
