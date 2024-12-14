@@ -521,6 +521,7 @@ jQuery(document).ready(function ($) {
 			$( document.body ).on( 'click', '#kbs-add-note', function() {
 				var note_content = $('#kbs_new_note').val();
 				var ticket_id    = kbs_vars.post_id;
+				var nonce       = $('#kbs_nonce').val();
 
 				if ( note_content.length < 1 )	{
 					window.alert(kbs_vars.no_note_content);
@@ -530,6 +531,7 @@ jQuery(document).ready(function ($) {
 				var postData         = {
 					ticket_id    : ticket_id,
 					note_content : note_content,
+					kbs_nonce    : nonce,
 					action       : 'kbs_insert_ticket_note'
 				};
 
