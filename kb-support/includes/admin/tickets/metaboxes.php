@@ -1023,6 +1023,7 @@ function kbs_ticket_metabox_add_note_row( $ticket_id )	{
 	global $kbs_ticket, $kbs_ticket_update; ?>
 
 	<?php $flag_label = $kbs_ticket->flagged ? esc_html__( 'Unflag', 'kb-support' ) : esc_html__( 'Flag', 'kb-support' ); ?>
+	<?php wp_nonce_field( 'kbs_submission_nonce', 'kbs_nonce' ) ?>
 
 	<div id="kbs-ticket-add-note-container">
     	<p><label for="kbs_new_note"><strong><?php esc_html_e( 'Add a New Note', 'kb-support' ); ?></strong></label><br />
