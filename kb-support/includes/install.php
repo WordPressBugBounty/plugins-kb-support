@@ -78,6 +78,9 @@ function kbs_run_install() {
 	// Clear the permalinks
 	flush_rewrite_rules( false );
 
+	// Create .htaccess file in uploads directory
+	kbs_create_upload_htaccess();
+
 	// Add Upgraded From Option
 	$current_version = get_option( 'kbs_version' );
 	if ( $current_version ) {

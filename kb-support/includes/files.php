@@ -497,3 +497,60 @@ function kbs_get_ticket_files_list( $files = array() )	{
 
 	return $output;
 } // kbs_get_ticket_files_list
+
+/**
+ * Create or update the .htaccess file in the KBS upload directory
+ *
+ * @since   1.7.3.2
+ * @return  bool    True if .htaccess was created/updated, false otherwise
+ */
+if( ! function_exists('kbs_create_upload_htaccess') ) {
+	function kbs_create_upload_htaccess() {
+		$upload_dir = wp_upload_dir();
+
+		// If we can't get the upload directory, return false
+		if ( ! $upload_dir || ! isset( $upload_dir['basedir'] ) ) {
+			return false;
+		}
+
+		// Create the kbs directory if it doesn't exist
+		$kbs_dir = trailingslashit( $upload_dir['basedir'] ) . 'kbs';
+		if ( ! file_exists( $kbs_dir ) ) {
+			wp_mkdir_p( $kbs_dir );
+		}
+
+		$htaccess_file = trailingslashit( $kbs_dir ) . '.htaccess';
+
+		// Htaccess rules
+		$rules = "Options -Indexes\n"; // Prevent directory listing
+		$rules .= "<IfModule mod_rewrite.c>\n";
+		$rules .= "RewriteEngine On\n";
+		$rules .= "RewriteCond %{HTTP_REFERER} !^" . home_url() . " [NC]\n";
+		$rules .= "RewriteCond %{HTTP_REFERER} !^" . home_url() . "/.* [NC]\n";
+		$rules .= "RewriteRule .* - [F,L]\n";
+		$rules .= "</IfModule>\n";
+		$rules .= "<FilesMatch '\.(jpg|jpeg|png|gif|pdf|doc|docx|odt|xls|xlsx|ods|mp3|mp4|mov|wav|zip|rar)$'>\n";
+		$rules .= "Order Deny,Allow\n";
+		$rules .= "Allow from all\n";
+		$rules .= "</FilesMatch>\n";
+
+		// Create or update the .htaccess file
+		$created = file_put_contents( $htaccess_file, $rules );
+
+		return $created !== false;
+	}
+}
+
+/**
+ * Ensure .htaccess exists in KBS upload directory
+ *
+ * @since   1.7.3.2
+ * @return  void
+ */
+if( ! function_exists( 'kbs_check_upload_htaccess' ) ) {
+	function kbs_check_upload_htaccess() {
+		// Create/update the .htaccess file
+		kbs_create_upload_htaccess();
+	}
+	add_action( 'admin_init', 'kbs_check_upload_htaccess' );
+}
