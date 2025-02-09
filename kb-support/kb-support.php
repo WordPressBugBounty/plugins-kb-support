@@ -4,7 +4,7 @@
  * Plugin Name: KB Support
  * Plugin URI: https://kb-support.com/
  * Description: The best help desk tool for WordPress. Simple yet effective. Feature rich.
- * Version: 1.7.3.2
+ * Version: 1.7.4
  * Author: KB Support
  * Author URI: https://kb-support.com/
  * Text Domain: kb-support
@@ -29,7 +29,7 @@
  * @package		KBS
  * @category	Core
  * @author		KB Support
- * @version		1.7.3.2
+ * @version		1.7.4
  */
 // Exit if accessed directly.
 if ( !defined( 'ABSPATH' ) ) {
@@ -187,7 +187,7 @@ if ( !class_exists( 'KB_Support' ) ) {
          */
         private function setup_constants() {
             if ( !defined( 'KBS_VERSION' ) ) {
-                define( 'KBS_VERSION', '1.7.3.2' );
+                define( 'KBS_VERSION', '1.7.4' );
             }
             if ( !defined( 'KBS_PLUGIN_DIR' ) ) {
                 define( 'KBS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
@@ -490,7 +490,7 @@ if ( !function_exists( 'ks_fs' ) ) {
         global $ks_fs;
         if ( !isset( $ks_fs ) ) {
             // Include Freemius SDK.
-            require_once dirname( __FILE__ ) . '/freemius/start.php';
+            require_once dirname( __FILE__ ) . '/vendor/freemius/start.php';
             $ks_fs = fs_dynamic_init( array(
                 'id'             => '16080',
                 'slug'           => 'kb-support',

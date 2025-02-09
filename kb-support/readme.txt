@@ -1,16 +1,18 @@
 === KB Support - Customer Support Ticket & Helpdesk Plugin, Knowledge Base Plugin ===
-Contributors: cagdasdag, polatinceler
+Contributors: logoninc, freemius
 Tags: customer support, helpdesk, support, ticket, knowledge base
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 5.6
-Stable tag: 1.7.3.2
+Stable tag: 1.7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Best WordPress help desk, customer ticket and Knowledge Base plugin for WordPress. Simple yet effective. Feature rich.
 
 == Description ==
+
+**IMPORTANT NOTICE** KB Support is under new ownership. If you reached out to us for support, we no longer have access to past customer tickets or email conversation chains. If you need assistance, please post in the support forum, or email us directly. We apologize for the inconvenience, and are working to set up a new support help desk (using KB Support, of course) as soon as possible.
 
 KB Support is the ultimate WordPress plugin for providing support and help desk services to your customers.
 
@@ -120,6 +122,13 @@ Extensions are available at [https://kb-support.com/extensions/](https://kb-supp
 6. When a customer is accessing a KB Article that is restricted
 
 == Changelog ==
+
+= 1.7.4 - 09.02.2025 =
+Updated: Update Freemius SDK
+
+= 1.7.3 - 29.01.2025 =
+Fixed: Issue with upload folder
+
 = 1.7.1 - 17.10.2024 = 
 Updated: Admin page fatal error issue fixes
 
